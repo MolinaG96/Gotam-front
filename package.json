@@ -1,27 +1,51 @@
 {
-  "name": "gotam-front",
-  "version": "0.1.0",
-  "private": true,
-  "scripts": {
-    "dev": "next dev",
-    "build": "next build",
-    "start": "next start",
-    "lint": "next lint"
-  },
-  "dependencies": {
-    "react": "^18",
-    "react-dom": "^18",
-    "next": "13.5.4"
-  },
-  "devDependencies": {
-    "typescript": "^5",
-    "@types/node": "^20",
-    "@types/react": "^18",
-    "@types/react-dom": "^18",
-    "autoprefixer": "^10",
-    "postcss": "^8",
-    "tailwindcss": "^3",
-    "eslint": "^8",
-    "eslint-config-next": "13.5.4"
-  }
+    "name": "gotam-front",
+    "version": "0.1.0",
+    "private": true,
+    "scripts": {
+        "dev": "next dev",
+        "build": "next build",
+        "start": "next start",
+        "lint": "next lint",
+        "prepare": "husky install"
+    },
+    "dependencies": {
+        "react": "18.2.0",
+        "react-dom": "18.2.0",
+        "react-icons": "^4.10.1",
+        "next": "13.4.10",
+        "tailwindcss": "3.3.3",
+        "sweetalert2": "^11.7.27",
+        "react-slick": "^0.29.0",
+        "slick-carousel": "^1.8.1",
+        "axios": "^1.4.0",
+        "dotenv": "^16.3.1",
+        "eslint-config-next": "13.4.10",
+        "postcss": "8.4.26",
+        "autoprefixer": "10.4.14",
+        "mkdirp": "^3.0.1"
+    },
+    "devDependencies": {
+        "autoprefixer": "^10",
+        "postcss": "^8",
+        "tailwindcss": "^3",
+        "eslint-config-next": "13.5.4",
+        "typescript": "^5.1.6",
+        "@types/react": "^18.2.21",
+        "@types/node": "^20",
+        "@types/react-dom": "^18.2.7",
+        "@types/react-slick": "^0.23.10",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
+        "husky": "^8.0.3",
+        "eslint": "^8.47.0",
+        "lint-staged": "^13.2.3",
+        "prettier": "^3.0.0",
+        "eslint-config-prettier": "^8.9.0",
+        "eslint-config-standard-with-typescript": "^37.0.0",
+        "eslint-plugin-import": "^2.27.5",
+        "eslint-plugin-n": "^16.0.1",
+        "eslint-plugin-prettier": "^5.0.0",
+        "eslint-plugin-promise": "^6.1.1",
+        "eslint-plugin-react": "^7.33.1"
+    }
 }
