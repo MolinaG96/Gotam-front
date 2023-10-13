@@ -7,6 +7,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import type IEmployee from '@/app/interfaces/IEmployee'
 import { useEffect, useState } from 'react'
 import EmployeeCard from '@/app/components/EmployeeCard'
+import { getAllEmployees } from '@/app/services/getAllEmployees'
 
 const EmployeesManagement = () => {
     const [employees, setEmployees] = useState<IEmployee[]>([])
@@ -20,195 +21,20 @@ const EmployeesManagement = () => {
         slidesPerRow: 1,
         rows: 6,
     }
-
-    // const fetchAllPackages = async () => {
-    //     try {
-    //         const allPackages = await getAllPackages()
-    //         setCurrentPackages(allPackages)
-    //     } catch (error) {
-    //         console.error('fetchAllPackages error', error)
-    //     }
-    // }
-
-    // const fetchAllInProgress = async () => {
-    //     try {
-    //         const allPackages = await getAllInProgress()
-    //         setCurrentPackages(allPackages)
-    //     } catch (error) {
-    //         console.error('fetchAllInProgress error', error)
-    //     }
-    // }
-
-    // const fetchAllDelivered = async () => {
-    //     try {
-    //         const allPackages = await getAllDelivered()
-    //         setCurrentPackages(allPackages)
-    //     } catch (error) {
-    //         console.error('fetchAllDelivered error', error)
-    //     }
-    // }
-
-    // const fetchAllPending = async () => {
-    //     try {
-    //         const allPackages = await getAllPending()
-    //         setCurrentPackages(allPackages)
-    //     } catch (error) {
-    //         console.error('fetchAllPending error', error)
-    //     }
-    // }
-
-    // const handleDelete = async (packageId: string) => {
-    //     try {
-    //         const result = await Swal.fire({
-    //             text: '¿Está seguro que deseas eliminar este paquete?',
-    //             icon: 'warning',
-    //             confirmButtonText: 'Si',
-    //             cancelButtonText: 'No',
-    //             showCancelButton: true,
-    //             confirmButtonColor: '#00EA77',
-    //             cancelButtonColor: '#3D1DF3',
-    //         })
-
-    //         if (result.isConfirmed) {
-    //             await deletePackage(packageId)
-    //             const packagesFiltered = currentPackages.filter(
-    //                 (packageToRemove) => packageToRemove._id !== packageId
-    //             )
-    //             setCurrentPackages(packagesFiltered)
-    //             await Swal.fire({
-    //                 text: 'Paquete eliminado correctamente!',
-    //                 icon: 'success',
-    //                 confirmButtonText: 'Ok',
-    //             })
-    //         }
-    //     } catch (error) {
-    //         console.error('handleDelete error', error)
-    //     }
-    // }
-
-    const employeesArr = [
-        {
-            _id: '1',
-            name: 'John Doe',
-            dni: 123456789,
-            birthday: '1990-05-15',
-            developer: true,
-            area: 'cocina',
-            description: 'Experienced web developer',
-        },
-        {
-            _id: '2',
-            name: 'Alice Smith',
-            dni: 987654321,
-            birthday: '1985-08-22',
-            developer: false,
-            area: 'marketing',
-            description: 'Graphic designer and illustrator',
-        },
-        {
-            _id: '3',
-            name: 'Eva Johnson',
-            dni: 654321987,
-            birthday: '1992-11-10',
-            developer: true,
-            area: 'recursos humanos',
-            description: 'Frontend developer with a passion for UX',
-        },
-        {
-            _id: '4',
-            name: 'Michael Brown',
-            dni: 456789123,
-            birthday: '1987-03-28',
-            developer: false,
-            area: 'frontend',
-            description: 'Backend developer specializing in databases',
-        },
-        {
-            _id: '4',
-            name: 'Michael Brown',
-            dni: 456789123,
-            birthday: '1987-03-28',
-            developer: false,
-            area: 'frontend',
-            description: 'Backend developer specializing in databases',
-        },
-        {
-            _id: '5',
-            name: 'micaela alabardina',
-            dni: 234567890,
-            birthday: '1994-06-05',
-            developer: true,
-            area: 'backend',
-            description: 'Full-stack developer and tech enthusiast',
-        },
-        {
-            _id: '1',
-            name: 'John Doe',
-            dni: 123456789,
-            birthday: '1990-05-15',
-            developer: true,
-            area: 'cocina',
-            description: 'Experienced web developer',
-        },
-        {
-            _id: '2',
-            name: 'Alice Smith',
-            dni: 987654321,
-            birthday: '1985-08-22',
-            developer: false,
-            area: 'marketing',
-            description: 'Graphic designer and illustrator',
-        },
-        {
-            _id: '3',
-            name: 'Eva Johnson',
-            dni: 654321987,
-            birthday: '1992-11-10',
-            developer: true,
-            area: 'recursos humanos',
-            description: 'Frontend developer with a passion for UX',
-        },
-        {
-            _id: '4',
-            name: 'Michael Brown',
-            dni: 456789123,
-            birthday: '1987-03-28',
-            developer: false,
-            area: 'frontend',
-            description: 'Backend developer specializing in databases',
-        },
-        {
-            _id: '4',
-            name: 'Michael Brown',
-            dni: 456789123,
-            birthday: '1987-03-28',
-            developer: false,
-            area: 'frontend',
-            description: 'Backend developer specializing in databases',
-        },
-        {
-            _id: '5',
-            name: 'micaela alabardina',
-            dni: 234567890,
-            birthday: '1994-06-05',
-            developer: true,
-            area: 'backend',
-            description: 'Full-stack developer and tech enthusiast',
-        },
-        {
-            _id: '5',
-            name: 'micaela alabardina',
-            dni: 234567890,
-            birthday: '1994-06-05',
-            developer: true,
-            area: 'backend',
-            description: 'Full-stack developer and tech enthusiast',
-        },
-    ]
+    
+    const fetchAllEmployees = async () => {
+        try {
+            const allEmployees: IEmployee[] = await getAllEmployees()
+            setEmployees(allEmployees)
+        } catch (error) {
+            console.error('fetchAllEmployees error', error)
+        }
+    }
 
     useEffect(() => {
-        // void fetchAllPackages()
-        setEmployees(employeesArr)
+        void fetchAllEmployees()
+        setEmployees(employees)
+
     }, [])
 
     return (
