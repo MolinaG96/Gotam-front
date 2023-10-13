@@ -1,51 +1,29 @@
 'use client'
-import { Button } from '@/app/commons/Button'
-import '../../styles/login.css'
-import { useRouter } from 'next/navigation'
-import Swal from 'sweetalert2'
-import { login } from '@/app/services/login'
-import useInput from '@/app/hooks/useInput'
-import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { BiSolidUser } from 'react-icons/bi'
+import useInput from '@/app/hooks/useInput'
+import type IEmployee from '@/app/interfaces/IEmployee'
+import { useState } from 'react'
 import { RiLogoutBoxLine } from 'react-icons/ri'
-import { HiOutlineLockClosed } from 'react-icons/hi'
-import type IUser from '@/app/interfaces/IUser'
+import { FaUserPlus, FaGraduationCap } from 'react-icons/fa'
+import { BiCreditCardFront } from 'react-icons/bi'
+import { AiOutlineMail } from 'react-icons/ai'
+import { MdDescription } from 'react-icons/md'
 
 const NewEmployee = () => {
-    const router = useRouter()
-    const email = useInput('')
-    const password = useInput('')
-    const [showPassword, setShowPassword] = useState(false)
-
-    const togglePasswordVisibility = () => {
-        setShowPassword((prevShowPassword) => !prevShowPassword)
-    }
-
-    const handleLogin = async (e: any) => {
-        e.preventDefault()
-        try {
-            const user: IUser = await login(email.value, password.value)
-
-            if (user !== null) {
-                router.push('/employees')
-            }
-        } catch (error) {
-            await Swal.fire({
-                text: 'Email y/o contraseña incorrectos',
-                icon: 'error',
-            })
-            console.error('handleLogin error', error)
-        }
-    }
+    const [newEmployee, setNewEmployee] = useState<IEmployee>()
+    const name = useInput('')
+    const dni = useInput(0)
+    const birthday = useInput('')
+    const developer = useInput('')
+    const description = useInput('')
+    const area = useInput('')
 
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed bg-no-repeat w-screen h-screen"
             style={{
                 backgroundImage:
-                    'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697137410/gotam/fondos/fondoLS_jbycrw.png)',
+                    'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143591/gotam/fondos/editemployee_ofcwnh.png)',
             }}
         >
             <img
@@ -54,9 +32,7 @@ const NewEmployee = () => {
             />
 
             <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
-
-            <div className="cont-login back"></div>
-
+            {/* employee */}
             <div className="cont-login front">
                 <div className="nav-login w-full h-[20%] flex justify-start items-center">
                     <div className="circle bg-[#76aed6]"></div>
@@ -65,50 +41,73 @@ const NewEmployee = () => {
                 </div>
                 <div className="w-full h-[80%]">
                     <form
-                        onSubmit={handleLogin}
+                        onSubmit={() => {}}
                         className="px-8 pb-8 mb-4 w-full h-full flex flex-col align-center justify-center "
                     >
-                        <div className="mb-4 bg-white">
+                        <div className="mb-4">
                             <Input
-                                placeholder="email@contraseña.com"
+                                placeholder="name:"
                                 type="text"
                                 iconType={
-                                    <BiSolidUser className="w-full h-full" />
+                                    <FaUserPlus className="w-full h-full" />
                                 }
-                                value={email.value}
-                                onChange={email.onChange}
+                                value={name.value}
+                                onChange={name.onChange}
                             />
                         </div>
-                        <div className="mb-[5vw] ">
+                        <div className="mb-4">
                             <Input
-                                type={showPassword ? 'text' : 'password'}
-                                placeholder="Password"
-                                value={password.value}
-                                onChange={password.onChange}
+                                placeholder="dni:"
+                                type="text"
                                 iconType={
-                                    <HiOutlineLockClosed className="w-full h-full" />
+                                    <BiCreditCardFront className="w-full h-full" />
                                 }
-                                iconTypeRight={
-                                    showPassword ? (
-                                        <AiOutlineEye className="w-full h-full cursor-pointer" />
-                                    ) : (
-                                        <AiOutlineEyeInvisible className="w-full h-full cursor-pointer" />
-                                    )
-                                }
-                                togglePasswordVisibility={
-                                    togglePasswordVisibility
-                                }
+                                value={dni.value}
+                                onChange={dni.onChange}
                             />
                         </div>
-                        <div className="flex justify-center">
-                            <Button type={'submit'} className="btn-login">
-                                Iniciar sesion
-                            </Button>
+                        <div className="mb-4">
+                            <Input
+                                placeholder="nacimiento:"
+                                type="text"
+                                iconType={
+                                    <AiOutlineMail className="w-full h-full" />
+                                }
+                                value={birthday.value}
+                                onChange={birthday.onChange}
+                            />
                         </div>
-                        <div className="flex justify-center">
-                            <Button type={'submit'} className="btn-reg">
-                                REGISTRATE
-                            </Button>
+                        <div className="mb-4">
+                            <Input
+                                placeholder="descripcion:"
+                                type="text"
+                                iconType={
+                                    <MdDescription className="w-full h-full" />
+                                }
+                                value={description.value}
+                                onChange={description.onChange}
+                            />
+                        </div>
+                    </form>
+                </div>
+            </div>
+            {/* area */}
+            <div className="">
+                <div className="">
+                    <form
+                        onSubmit={() => {}}
+                        className="px-8 pb-8 mb-4 w-full h-full flex flex-col align-center justify-center "
+                    >
+                        <div className="mb-4">
+                            <Input
+                                placeholder="name:"
+                                type="text"
+                                iconType={
+                                    <FaGraduationCap className="w-full h-full" />
+                                }
+                                value={name.value}
+                                onChange={name.onChange}
+                            />
                         </div>
                     </form>
                 </div>

@@ -6,6 +6,7 @@
     background-color: #f0fd71;
     border: 2px solid black;
 }
+
 .back {
     position: absolute;
     background-color: #ff99ff;
@@ -13,9 +14,11 @@
     left: 28.5vw;
     top: 22.5vh;
 }
+
 .front {
     z-index: 10;
 }
+
 .nav-login {
     border-bottom: 2px solid black;
 }
