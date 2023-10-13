@@ -13,6 +13,10 @@ const config: Config = {
                 'gradient-conic':
                     'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
+            fontFamily: {
+                disketMonoBold: ['Disket-Mono-Bold', 'sans-serif'],
+                disketMonoRegular: ['Disket-Mono-Regular', 'sans-serif'],
+            },
         },
     },
     plugins: [],

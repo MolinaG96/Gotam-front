@@ -1,0 +1,30 @@
+@font-face {
+    font-family: 'Disket-Mono-Bold';
+    src: url('../../../public/fonts/Disket-Mono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Disket-Mono-Regular';
+    src: url('../../../public/fonts/Disket-Mono-Bold.ttf') format('truetype');
+}
+
+.button-generic {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Disket-Mono-Regular';
+    color: white;
+    margin: 0;
+    padding: 0;
+}
+
+.cont-img {
+    width: 100%;
+    position: absolute;
+}
+
+.cont-p {
+    z-index: 25;
+    margin: 0;
+    padding: 0;
+}
