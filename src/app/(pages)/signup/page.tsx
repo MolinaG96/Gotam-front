@@ -7,7 +7,11 @@ import { login } from '@/app/services/login'
 import useInput from '@/app/hooks/useInput'
 import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
+import {
+    AiOutlineEye,
+    AiOutlineEyeInvisible,
+    AiOutlineMail,
+} from 'react-icons/ai'
 import { BiSolidUser } from 'react-icons/bi'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
@@ -15,6 +19,7 @@ import { signUpService } from '@/app/services/signUp'
 
 const SignUp = () => {
     const router = useRouter()
+    const name = useInput('')
     const email = useInput('')
     const password = useInput('')
     const confirmPassword = useInput('')
@@ -49,6 +54,7 @@ const SignUp = () => {
             }
 
             const newUser: IUser = await signUpService(
+                name.value,
                 email.value,
                 password.value
             )
@@ -104,18 +110,29 @@ const SignUp = () => {
                         onSubmit={handleSignUp}
                         className="px-8 w-full h-full flex flex-col align-center justify-center "
                     >
-                        <div className="mb-4">
+                        <div className="mb-2">
+                            <Input
+                                placeholder="nombre completo:"
+                                type="text"
+                                iconType={
+                                    <BiSolidUser className="w-full h-full" />
+                                }
+                                value={name.value}
+                                onChange={name.onChange}
+                            />
+                        </div>
+                        <div className="mb-2">
                             <Input
                                 placeholder="email:"
                                 type="text"
                                 iconType={
-                                    <BiSolidUser className="w-full h-full" />
+                                    <AiOutlineMail className="w-full h-full" />
                                 }
                                 value={email.value}
                                 onChange={email.onChange}
                             />
                         </div>
-                        <div className="mb-4">
+                        <div className="mb-2">
                             <Input
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="contraseña"
@@ -136,7 +153,7 @@ const SignUp = () => {
                                 }
                             />
                         </div>
-                        <div className="mb-[5vw]">
+                        <div className="">
                             <Input
                                 type={showPassword2 ? 'text' : 'password'}
                                 placeholder="confirmar contraseña"
@@ -157,20 +174,22 @@ const SignUp = () => {
                                 }
                             />
                         </div>
-                        <div className="flex justify-center">
+                        <div className="flex justify-center pt-[4.5vw] ">
                             <Button type={'submit'} className="btn-login">
                                 CREAR CUENTA
                             </Button>
-                            <h1
-                                className="cursor-pointer font-disketMonoRegular mt-3"
-                                onClick={() => {
-                                    router.push('/login')
-                                }}
-                            >
-                                ¿ya tienes cuenta?¡ingresar!
-                            </h1>
                         </div>
                     </form>
+                    <div className="flex justify-center text-align ">
+                        <h1
+                            className="cursor-pointer font-disketMonoRegular pt-2 "
+                            onClick={() => {
+                                router.push('/login')
+                            }}
+                        >
+                            ¿ya tienes cuenta? ingresa.
+                        </h1>{' '}
+                    </div>
                 </div>
             </div>
         </div>

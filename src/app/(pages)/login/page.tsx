@@ -7,9 +7,11 @@ import { login } from '@/app/services/login'
 import useInput from '@/app/hooks/useInput'
 import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { BiSolidUser } from 'react-icons/bi'
-import { RiLogoutBoxLine } from 'react-icons/ri'
+import {
+    AiOutlineEye,
+    AiOutlineEyeInvisible,
+    AiOutlineMail,
+} from 'react-icons/ai'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
 
@@ -78,7 +80,7 @@ const Login = () => {
                                 placeholder="email:"
                                 type="text"
                                 iconType={
-                                    <BiSolidUser className="w-full h-full" />
+                                    <AiOutlineMail className="w-full h-full" />
                                 }
                                 value={email.value}
                                 onChange={email.onChange}

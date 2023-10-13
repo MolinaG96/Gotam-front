@@ -2,6 +2,7 @@ import axios from 'axios'
 import type IUser from '../interfaces/IUser'
 
 export const signUpService = async (
+    name: string,
     email: string,
     password: string
 ): Promise<IUser> => {
@@ -10,6 +11,7 @@ export const signUpService = async (
     const response = await axios.post(
         `${apiUrl}/user/signup`,
         {
+            name,
             email,
             password,
         },
