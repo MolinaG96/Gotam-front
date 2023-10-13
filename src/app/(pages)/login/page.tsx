@@ -11,7 +11,7 @@ import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { BiSolidUser } from 'react-icons/bi'
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import { HiOutlineLockClosed } from 'react-icons/hi'
-import IUser from '@/app/interfaces/IUser'
+import type IUser from '@/app/interfaces/IUser'
 
 const Login = () => {
     const router = useRouter()
@@ -44,7 +44,8 @@ const Login = () => {
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed bg-no-repeat w-screen h-screen"
             style={{
-                backgroundImage: `url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697137410/gotam/fondos/fondoLS_jbycrw.png)`,
+                backgroundImage:
+                    'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697137410/gotam/fondos/fondoLS_jbycrw.png)',
             }}
         >
             <img

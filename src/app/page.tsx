@@ -1,7 +1,7 @@
 'use client'
 import { useEffect, useState } from 'react'
 import { useRouter } from 'next/navigation'
-import IUser from './interfaces/IUser'
+import type IUser from './interfaces/IUser'
 import { persistence } from './services/persistence'
 
 export default function Home() {

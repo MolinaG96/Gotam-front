@@ -1,5 +1,5 @@
 import axios from 'axios'
-import IUser from '../interfaces/IUser'
+import type IUser from '../interfaces/IUser'
 
 export const login = async (
     email: string,
