@@ -12,7 +12,7 @@ export default function Home() {
         try {
             const userToken: IUser = await persistence()
             if (userToken !== null) {
-                router.push('/employees')
+                router.push('/employees-management')
             } else {
                 router.push('/login')
             }

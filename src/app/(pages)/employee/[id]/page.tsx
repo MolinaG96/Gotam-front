@@ -13,7 +13,7 @@ import { RiLogoutBoxLine } from 'react-icons/ri'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
 
-const Login = () => {
+const Employee = () => {
     const router = useRouter()
     const email = useInput('')
     const password = useInput('')
@@ -23,13 +23,13 @@ const Login = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword)
     }
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    const handleLogin = async (e: any) => {
         e.preventDefault()
         try {
             const user: IUser = await login(email.value, password.value)
 
             if (user !== null) {
-                router.push('/employees-management')
+                router.push('/employees')
             }
         } catch (error) {
             await Swal.fire({
@@ -40,13 +40,6 @@ const Login = () => {
         }
     }
 
-    const handleSignUp = async () => {
-        try {
-            router.push('/signup')
-        } catch (error) {
-            console.error('handleLogin error', error)
-        }
-    }
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed bg-no-repeat w-screen h-screen"
@@ -59,6 +52,8 @@ const Login = () => {
                 src="https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143559/gotam/img/gotamTittle_mkdyoe.png"
                 className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
             />
+
+            <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
 
             <div className="cont-login back"></div>
 
@@ -73,9 +68,9 @@ const Login = () => {
                         onSubmit={handleLogin}
                         className="px-8 pb-8 mb-4 w-full h-full flex flex-col align-center justify-center "
                     >
-                        <div className="mb-4">
+                        <div className="mb-4 bg-white">
                             <Input
-                                placeholder="email:"
+                                placeholder="email@contraseña.com"
                                 type="text"
                                 iconType={
                                     <BiSolidUser className="w-full h-full" />
@@ -87,7 +82,7 @@ const Login = () => {
                         <div className="mb-[5vw] ">
                             <Input
                                 type={showPassword ? 'text' : 'password'}
-                                placeholder="contraseña"
+                                placeholder="Password"
                                 value={password.value}
                                 onChange={password.onChange}
                                 iconType={
@@ -111,11 +106,7 @@ const Login = () => {
                             </Button>
                         </div>
                         <div className="flex justify-center">
-                            <Button
-                                type={'button'}
-                                className="btn-reg"
-                                onClick={handleSignUp}
-                            >
+                            <Button type={'submit'} className="btn-reg">
                                 REGISTRATE
                             </Button>
                         </div>
@@ -126,4 +117,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default Employee

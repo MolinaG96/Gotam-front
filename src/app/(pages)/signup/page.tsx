@@ -9,27 +9,62 @@ import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
 import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
 import { BiSolidUser } from 'react-icons/bi'
-import { RiLogoutBoxLine } from 'react-icons/ri'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
+import { signUpService } from '@/app/services/signUp'
 
-const Login = () => {
+const SignUp = () => {
     const router = useRouter()
     const email = useInput('')
     const password = useInput('')
+    const confirmPassword = useInput('')
     const [showPassword, setShowPassword] = useState(false)
+    const [showPassword2, setShowPassword2] = useState(false)
 
     const togglePasswordVisibility = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword)
     }
 
-    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
+    const togglePasswordVisibility2 = () => {
+        setShowPassword2((prevShowPassword2) => !prevShowPassword2)
+    }
+
+    const handleSignUp = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
-            const user: IUser = await login(email.value, password.value)
+            if (!validateEmail(email.value)) {
+                await Swal.fire({
+                    text: 'El email debe tener formato de mail',
+                    icon: 'error',
+                })
+                return
+            }
 
-            if (user !== null) {
-                router.push('/employees-management')
+            if (password.value !== confirmPassword.value) {
+                await Swal.fire({
+                    text: 'Las contraseñas deben ser iguales',
+                    icon: 'error',
+                })
+                return
+            }
+
+            const newUser: IUser = await signUpService(
+                email.value,
+                password.value
+            )
+
+            if (newUser !== null) {
+                await Swal.fire({
+                    text: 'Usuario creado éxito!',
+                    icon: 'success',
+                    confirmButtonText: 'Ok',
+                })
+                router.push('/login')
+            } else {
+                await Swal.fire({
+                    text: 'Error al crear el usuario, intente nuevamente mas tarde',
+                    icon: 'error',
+                })
             }
         } catch (error) {
             await Swal.fire({
@@ -40,13 +75,11 @@ const Login = () => {
         }
     }
 
-    const handleSignUp = async () => {
-        try {
-            router.push('/signup')
-        } catch (error) {
-            console.error('handleLogin error', error)
-        }
+    const validateEmail = (email: string) => {
+        const regex = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/
+        return regex.test(email)
     }
+
     return (
         <div
             className="min-h-screen flex items-center justify-center bg-cover bg-center bg-fixed bg-no-repeat w-screen h-screen"
@@ -59,9 +92,7 @@ const Login = () => {
                 src="https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143559/gotam/img/gotamTittle_mkdyoe.png"
                 className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
             />
-
             <div className="cont-login back"></div>
-
             <div className="cont-login front">
                 <div className="nav-login w-full h-[20%] flex justify-start items-center">
                     <div className="circle bg-[#76aed6]"></div>
@@ -70,8 +101,8 @@ const Login = () => {
                 </div>
                 <div className="w-full h-[80%]">
                     <form
-                        onSubmit={handleLogin}
-                        className="px-8 pb-8 mb-4 w-full h-full flex flex-col align-center justify-center "
+                        onSubmit={handleSignUp}
+                        className="px-8 w-full h-full flex flex-col align-center justify-center "
                     >
                         <div className="mb-4">
                             <Input
@@ -84,7 +115,7 @@ const Login = () => {
                                 onChange={email.onChange}
                             />
                         </div>
-                        <div className="mb-[5vw] ">
+                        <div className="mb-4">
                             <Input
                                 type={showPassword ? 'text' : 'password'}
                                 placeholder="contraseña"
@@ -105,19 +136,39 @@ const Login = () => {
                                 }
                             />
                         </div>
-                        <div className="flex justify-center">
-                            <Button type={'submit'} className="btn-login">
-                                Iniciar sesion
-                            </Button>
+                        <div className="mb-[5vw]">
+                            <Input
+                                type={showPassword2 ? 'text' : 'password'}
+                                placeholder="confirmar contraseña"
+                                value={confirmPassword.value}
+                                onChange={confirmPassword.onChange}
+                                iconType={
+                                    <HiOutlineLockClosed className="w-full h-full" />
+                                }
+                                iconTypeRight={
+                                    showPassword2 ? (
+                                        <AiOutlineEye className="w-full h-full cursor-pointer" />
+                                    ) : (
+                                        <AiOutlineEyeInvisible className="w-full h-full cursor-pointer" />
+                                    )
+                                }
+                                togglePasswordVisibility={
+                                    togglePasswordVisibility2
+                                }
+                            />
                         </div>
                         <div className="flex justify-center">
-                            <Button
-                                type={'button'}
-                                className="btn-reg"
-                                onClick={handleSignUp}
-                            >
-                                REGISTRATE
+                            <Button type={'submit'} className="btn-login">
+                                CREAR CUENTA
                             </Button>
+                            <h1
+                                className="cursor-pointer font-disketMonoRegular mt-3"
+                                onClick={() => {
+                                    router.push('/login')
+                                }}
+                            >
+                                ¿ya tienes cuenta?¡ingresar!
+                            </h1>
                         </div>
                     </form>
                 </div>
@@ -126,4 +177,4 @@ const Login = () => {
     )
 }
 
-export default Login
+export default SignUp
