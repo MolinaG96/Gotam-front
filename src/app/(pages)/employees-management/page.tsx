@@ -21,7 +21,7 @@ const EmployeesManagement = () => {
         slidesPerRow: 1,
         rows: 6,
     }
-
+    
     const fetchAllEmployees = async () => {
         try {
             const allEmployees: IEmployee[] = await getAllEmployees()
@@ -34,6 +34,7 @@ const EmployeesManagement = () => {
     useEffect(() => {
         void fetchAllEmployees()
         setEmployees(employees)
+
     }, [])
 
     return (
