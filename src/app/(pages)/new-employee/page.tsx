@@ -12,7 +12,7 @@ import { createNewEmployee } from '@/app/services/createNewEmployee'
 import { Button } from '@/app/commons/Button'
 import Swal from 'sweetalert2'
 import { createNewArea } from '@/app/services/createNewArea'
-import IArea from '@/app/interfaces/IArea'
+import type IArea from '@/app/interfaces/IArea'
 import { getAllAreas } from '@/app/services/getAllAreas'
 import { updateAreaWithNewEmployee } from '@/app/services/updateAreaWithNewEmployee'
 
@@ -145,7 +145,6 @@ const NewEmployee = () => {
         if (Areas !== undefined) {
             const selected = Areas.find((area) => area._id === areaId)
             setSelectedArea(selected)
-            event.target.value = ''
         }
     }
 
