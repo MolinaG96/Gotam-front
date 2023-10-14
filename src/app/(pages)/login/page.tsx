@@ -7,9 +7,11 @@ import { login } from '@/app/services/login'
 import useInput from '@/app/hooks/useInput'
 import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
-import { AiOutlineEye, AiOutlineEyeInvisible } from 'react-icons/ai'
-import { BiSolidUser } from 'react-icons/bi'
-import { RiLogoutBoxLine } from 'react-icons/ri'
+import {
+    AiOutlineEye,
+    AiOutlineEyeInvisible,
+    AiOutlineMail,
+} from 'react-icons/ai'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
 
@@ -23,19 +25,27 @@ const Login = () => {
         setShowPassword((prevShowPassword) => !prevShowPassword)
     }
 
-    const handleLogin = async (e: any) => {
+    const handleLogin = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
             const user: IUser = await login(email.value, password.value)
 
             if (user !== null) {
-                router.push('/employees')
+                router.push('/employees-management')
             }
         } catch (error) {
             await Swal.fire({
                 text: 'Email y/o contraseña incorrectos',
                 icon: 'error',
             })
+            console.error('handleLogin error', error)
+        }
+    }
+
+    const handleSignUp = async () => {
+        try {
+            router.push('/signup')
+        } catch (error) {
             console.error('handleLogin error', error)
         }
     }
@@ -53,8 +63,6 @@ const Login = () => {
                 className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
             />
 
-            <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
-
             <div className="cont-login back"></div>
 
             <div className="cont-login front">
@@ -68,12 +76,12 @@ const Login = () => {
                         onSubmit={handleLogin}
                         className="px-8 pb-8 mb-4 w-full h-full flex flex-col align-center justify-center "
                     >
-                        <div className="mb-4 bg-white">
+                        <div className="mb-4">
                             <Input
-                                placeholder="email@contraseña.com"
+                                placeholder="email:"
                                 type="text"
                                 iconType={
-                                    <BiSolidUser className="w-full h-full" />
+                                    <AiOutlineMail className="w-full h-full" />
                                 }
                                 value={email.value}
                                 onChange={email.onChange}
@@ -82,7 +90,7 @@ const Login = () => {
                         <div className="mb-[5vw] ">
                             <Input
                                 type={showPassword ? 'text' : 'password'}
-                                placeholder="Password"
+                                placeholder="contraseña"
                                 value={password.value}
                                 onChange={password.onChange}
                                 iconType={
@@ -106,7 +114,11 @@ const Login = () => {
                             </Button>
                         </div>
                         <div className="flex justify-center">
-                            <Button type={'submit'} className="btn-reg">
+                            <Button
+                                type={'button'}
+                                className="btn-reg"
+                                onClick={handleSignUp}
+                            >
                                 REGISTRATE
                             </Button>
                         </div>

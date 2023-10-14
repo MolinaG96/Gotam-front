@@ -1,0 +1,77 @@
+.cont-login {
+    width: 25vw;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #f0fd71;
+    border: 2px solid black;
+}
+
+.cont-login2 {
+    width: 25vw;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #f793c3;
+    border: 2px solid black;
+}
+.cont-in {
+    background-color: rgb(117, 211, 255);
+}
+.cont-inin {
+    background-color: rgb(143, 244, 204);
+    border: 2px solid black;
+}
+.back {
+    position: absolute;
+    background-color: rgb(153, 255, 235);
+    z-index: 1;
+    left: 28.5vw;
+    top: 22.5vh;
+}
+
+.front {
+    z-index: 10;
+}
+
+.nav-login {
+    border-bottom: 2px solid black;
+}
+
+.circle {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+.square {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border: 2px solid black;
+    position: relative;
+}
+.line {
+    position: absolute;
+    width: 150%;
+    height: 2px;
+    background-color: #000;
+    transform-origin: center;
+}
+
+.line1 {
+    transform: rotate(45deg);
+}
+
+.line2 {
+    transform: rotate(-45deg);
+}
+.btn-login {
+    font-size: 1.1vw;
+    width: 16vw;
+}
+.btn-reg {
+    font-size: 1.1vw;
+    width: 16vw;
+}
