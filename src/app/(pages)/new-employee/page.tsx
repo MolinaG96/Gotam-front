@@ -1,4 +1,5 @@
 'use client'
+
 import '../../styles/employeeCreate.css'
 import { Input } from '@/app/commons/Input'
 import useInput from '@/app/hooks/useInput'

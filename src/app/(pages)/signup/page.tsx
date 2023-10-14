@@ -174,6 +174,7 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="flex justify-center pt-[4.5vw]">
+
                             <Button type={'submit'} className="btn-login">
                                 CREAR CUENTA
                             </Button>

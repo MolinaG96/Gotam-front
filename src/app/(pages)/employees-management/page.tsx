@@ -1,5 +1,7 @@
 'use client'
+
 import '../../styles/employeesManagements.css'
+
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
