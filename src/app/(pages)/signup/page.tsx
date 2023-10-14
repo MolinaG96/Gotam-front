@@ -3,7 +3,6 @@ import { Button } from '@/app/commons/Button'
 import '../../styles/login.css'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
-import { login } from '@/app/services/login'
 import useInput from '@/app/hooks/useInput'
 import { useState } from 'react'
 import { Input } from '@/app/commons/Input'
@@ -174,7 +173,8 @@ const SignUp = () => {
                                 }
                             />
                         </div>
-                        <div className="flex justify-center pt-[4.5vw] ">
+                        <div className="flex justify-center pt-[4.5vw]">
+
                             <Button type={'submit'} className="btn-login">
                                 CREAR CUENTA
                             </Button>

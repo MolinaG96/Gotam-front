@@ -1,11 +1,6 @@
-import type IEmployee from '../interfaces/IEmployee'
+import type IEmployeeProp from '../interfaces/props/IEmployeeProp'
 
-interface EmployeeProp {
-    employee: IEmployee
-    key: number
-}
-
-const EmployeeCard: React.FC<EmployeeProp> = ({ employee, key }) => {
+const EmployeeCard: React.FC<IEmployeeProp> = ({ employee, key }) => {
     return (
         <div
             key={employee._id}
@@ -23,9 +18,6 @@ const EmployeeCard: React.FC<EmployeeProp> = ({ employee, key }) => {
                 </p>
                 <p className="p-4 text-center max-w-[11.4vw] w-[11.4vw]">
                     {employee.developer ? 'Si' : 'No'}
-                </p>
-                <p className="p-4 text-center max-w-[12.3vw] w-[12.3vw]">
-                    {employee.area}
                 </p>
                 <p className="p-4 text-center max-w-[21.4vw] w-[21.4vw]">
                     {employee.description}
