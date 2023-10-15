@@ -1,18 +1,16 @@
 'use client'
-
-import '../../styles/employeesManagements.css'
-
+import '@/app/styles/employeesManagement.css'
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
-import type IEmployee from '@/app/interfaces/IEmployee'
 import { useEffect, useState } from 'react'
+import { getAllEmployeesByArea } from '@/app/services/getAllEmployeesByArea'
+import type IArea from '@/app/interfaces/IArea'
 import EmployeeCard from '@/app/components/EmployeeCard'
-import { getAllEmployees } from '@/app/services/getAllEmployees'
 
 const EmployeesManagement = () => {
-    const [employees, setEmployees] = useState<IEmployee[]>([])
+    const [areas, setAreas] = useState<IArea[]>([])
 
     const sliderSettings = {
         arrows: false,
@@ -24,18 +22,17 @@ const EmployeesManagement = () => {
         rows: 6,
     }
 
-    const fetchAllEmployees = async () => {
+    const fetchAllEmployeesByArea = async () => {
         try {
-            const allEmployees: IEmployee[] = await getAllEmployees()
-            setEmployees(allEmployees)
+            const allAreas: IArea[] = await getAllEmployeesByArea()
+            setAreas(allAreas)
         } catch (error) {
-            console.error('fetchAllEmployees error', error)
+            console.error('fetchAllEmployeesByArea error', error)
         }
     }
 
     useEffect(() => {
-        void fetchAllEmployees()
-        setEmployees(employees)
+        void fetchAllEmployeesByArea()
     }, [])
 
     return (
@@ -76,15 +73,18 @@ const EmployeesManagement = () => {
                         <div className="ml-[-7vw] mr-[5vw]">Descripción</div>
                     </div>
                     <div className="h-[95%]">
-                        {employees.length > 0 ? (
+                        {areas.length > 0 ? (
                             <div className="grap-4 overflow-hidden">
                                 <Slider className="mb-8" {...sliderSettings}>
-                                    {employees.map((employee, index) => (
-                                        <EmployeeCard
-                                            employee={employee}
-                                            key={index}
-                                        />
-                                    ))}
+                                    {areas.map((area) =>
+                                        area.employees.map((employee) => (
+                                            <EmployeeCard
+                                                employee={employee}
+                                                area={area.area}
+                                                key={employee._id}
+                                            />
+                                        ))
+                                    )}
                                 </Slider>
                             </div>
                         ) : (
