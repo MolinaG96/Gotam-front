@@ -1,4 +1,4 @@
-.cont-login {
+.cont-edit-employee {
     width: 25vw;
     max-width: 800px;
     height: 70vh;
@@ -7,7 +7,7 @@
     border: 2px solid black;
 }
 
-.cont-login2 {
+.cont-edit-area {
     width: 25vw;
     max-width: 800px;
     height: 70vh;
@@ -15,44 +15,37 @@
     background-color: #f793c3;
     border: 2px solid black;
 }
-.cont-in {
+
+.cont-edit-area-bg {
     background-color: rgb(117, 211, 255);
 }
-.cont-inin {
+
+.cont-edit-area-bg-above-bg {
     background-color: rgb(143, 244, 204);
     border: 2px solid black;
 }
-.back {
-    position: absolute;
-    background-color: rgb(153, 255, 235);
-    z-index: 1;
-    left: 28.5vw;
-    top: 22.5vh;
-}
 
-.front {
-    z-index: 10;
-}
-
-.nav-login {
+.straight-line-for-containers {
     border-bottom: 2px solid black;
 }
 
-.circle {
+.circle-edit-employee {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
     border-radius: 50%;
     border: 2px solid black;
 }
-.square {
+
+.area-edit-container-square {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
     border: 2px solid black;
     position: relative;
 }
-.line {
+
+.line-square {
     position: absolute;
     width: 150%;
     height: 2px;
@@ -60,20 +53,12 @@
     transform-origin: center;
 }
 
-.line1 {
+.diagonal-line1 {
     transform: rotate(45deg);
 }
 
-.line2 {
+.diagonal-line2 {
     transform: rotate(-45deg);
-}
-.btn-login {
-    font-size: 1.1vw;
-    width: 16vw;
-}
-.btn-reg {
-    font-size: 1.1vw;
-    width: 16vw;
 }
 
 .img-trash {

@@ -1,4 +1,4 @@
-.container-login {
+.container-signup {
     width: 40vw;
     max-width: 800px;
     height: 50vh;
@@ -19,11 +19,11 @@
     z-index: 10;
 }
 
-.nav-login {
+.nav-signup {
     border-bottom: 2px solid black;
 }
 
-.circle-login {
+.circle-signup {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
@@ -31,14 +31,8 @@
     border: 2px solid black;
 }
 
-.btn-login {
+.btn-signup {
     margin-top: -2.5vw;
-    font-size: 1.1vw;
-    width: 16vw;
-}
-
-.btn-register {
-    margin-top: 2vw;
     font-size: 1.1vw;
     width: 16vw;
 }
