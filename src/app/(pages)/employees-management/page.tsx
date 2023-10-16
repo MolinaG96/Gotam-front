@@ -8,6 +8,7 @@ import { useEffect, useState } from 'react'
 import { getAllEmployeesByArea } from '@/app/services/getAllEmployeesByArea'
 import type IArea from '@/app/interfaces/IArea'
 import EmployeeCard from '@/app/components/EmployeeCard'
+import Logo from '@/app/commons/Logo'
 
 const EmployeesManagement = () => {
     const [areas, setAreas] = useState<IArea[]>([])
@@ -43,10 +44,7 @@ const EmployeesManagement = () => {
                     'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143587/gotam/fondos/home_jgasuo.png)',
             }}
         >
-            <img
-                src="https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143559/gotam/img/gotamTittle_mkdyoe.png"
-                className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
-            />
+            <Logo disable={true} />
             <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
 
             <div className="cont-login front overflow-hidden">

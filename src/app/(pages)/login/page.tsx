@@ -14,6 +14,7 @@ import {
 } from 'react-icons/ai'
 import { HiOutlineLockClosed } from 'react-icons/hi'
 import type IUser from '@/app/interfaces/IUser'
+import Logo from '@/app/commons/Logo'
 
 const Login = () => {
     const router = useRouter()
@@ -58,11 +59,7 @@ const Login = () => {
                     'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697137410/gotam/fondos/fondoLS_jbycrw.png)',
             }}
         >
-            <img
-                src="https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143559/gotam/img/gotamTittle_mkdyoe.png"
-                className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
-            />
-
+            <Logo disable={true} />
             <div className="cont-login back"></div>
 
             <div className="cont-login front">

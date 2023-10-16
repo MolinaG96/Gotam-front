@@ -16,6 +16,7 @@ import { createNewArea } from '@/app/services/createNewArea'
 import type IArea from '@/app/interfaces/IArea'
 import { getAllAreas } from '@/app/services/getAllAreas'
 import { updateAreaWithNewEmployee } from '@/app/services/updateAreaWithNewEmployee'
+import Logo from '@/app/commons/Logo'
 
 const NewEmployee = () => {
     const [developer, setDeveloper] = useState(false)
@@ -171,10 +172,7 @@ const NewEmployee = () => {
                     'url(https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143591/gotam/fondos/editemployee_ofcwnh.png)',
             }}
         >
-            <img
-                src="https://res.cloudinary.com/dqf9xgsfp/image/upload/v1697143559/gotam/img/gotamTittle_mkdyoe.png"
-                className="absolute w-[250px] top-[1vh] left-[2vw] z-30"
-            />
+            <Logo disable={false} />
 
             <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
             {/* employee */}
