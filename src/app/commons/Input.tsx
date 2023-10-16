@@ -11,6 +11,7 @@ interface InputProps {
     value: any
     onChange?: (data: any) => void
     required?: boolean
+    disable?: boolean
 }
 
 export const Input: React.FC<InputProps> = ({
@@ -23,9 +24,10 @@ export const Input: React.FC<InputProps> = ({
     value,
     onChange,
     required,
+    disable,
 }) => {
     return (
-        <div className="relative ">
+        <div className="relative">
             <input
                 className={`border-2 border-blue-600 p-2 pl-10 w-full placeholder-gray-600 ${customStyle} font-disketMonoBold text-black`}
                 type={type}
@@ -36,6 +38,7 @@ export const Input: React.FC<InputProps> = ({
                 value={value}
                 onChange={onChange}
                 required={required}
+                disabled={disable}
             />
             <span className="absolute top-1/2 left-0 w-6 h-6 ml-3 transform -translate-y-1/2 z-50">
                 {iconType}

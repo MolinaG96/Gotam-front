@@ -8,11 +8,11 @@ export const updateAreaWithNewEmployee = async (
     employeeData: IEmployee
 ): Promise<IArea> => {
     try {
-        const employees: IEmployee[] = [employeeData]
+        const employee: IEmployee = employeeData
         const response = await axiosInstance.put('/area/edit', {
             _id,
             area,
-            employees,
+            employee,
         })
 
         const areaUpdated: IArea = response.data

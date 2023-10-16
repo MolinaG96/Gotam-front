@@ -9,6 +9,7 @@ import { FaUserPlus, FaGraduationCap } from 'react-icons/fa'
 import { BiCreditCardFront } from 'react-icons/bi'
 import { AiOutlineMail } from 'react-icons/ai'
 import { MdDescription } from 'react-icons/md'
+import { LiaBirthdayCakeSolid } from 'react-icons/lia'
 import { createNewEmployee } from '@/app/services/createNewEmployee'
 import { Button } from '@/app/commons/Button'
 import Swal from 'sweetalert2'
@@ -54,7 +55,7 @@ const NewEmployee = () => {
 
             if (dni.value < 10000000 || dni.value > 100000000) {
                 await Swal.fire({
-                    text: 'Su DNI tiene que contener entre 7 y 8 digitos!',
+                    text: 'El DNI tiene que ser mayor a 10.000.000 y menor a 100.000.000!',
                     icon: 'error',
                 })
                 return
@@ -64,7 +65,7 @@ const NewEmployee = () => {
                 name: name.value,
                 dni: dni.value,
                 birthday: birthday.value,
-                developer: developer,
+                developer,
                 description: description.value,
             })
 
@@ -220,7 +221,7 @@ const NewEmployee = () => {
                                     placeholder="nacimiento:"
                                     type="text"
                                     iconType={
-                                        <AiOutlineMail className="w-full h-full" />
+                                        <LiaBirthdayCakeSolid className="w-full h-full" />
                                     }
                                     value={birthday.value}
                                     onChange={birthday.onChange}
@@ -302,15 +303,14 @@ const NewEmployee = () => {
                                         <option className="s" value="">
                                             Selecciona un área
                                         </option>
-                                        {Areas !== undefined &&
-                                            Areas.map((area) => (
-                                                <option
-                                                    key={area._id}
-                                                    value={area._id}
-                                                >
-                                                    {area.area}
-                                                </option>
-                                            ))}
+                                        {Areas?.map((area) => (
+                                            <option
+                                                key={area._id}
+                                                value={area._id}
+                                            >
+                                                {area.area}
+                                            </option>
+                                        ))}
                                     </select>
                                 </div>
                             </form>
