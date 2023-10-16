@@ -1,6 +1,6 @@
 'use client'
 import { Button } from '@/app/commons/Button'
-import '../../styles/login.css'
+import '@/app/styles/login.css'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import { login } from '@/app/services/login'
@@ -60,9 +60,9 @@ const Login = () => {
             }}
         >
             <Logo disable={true} />
-            <div className="container-login back"></div>
+            <div className="container-login container-login-back"></div>
 
-            <div className="container-login front">
+            <div className="container-login container-login-front">
                 <div className="nav-login w-full h-[20%] flex justify-start items-center">
                     <div className="circle-login bg-[#76aed6]"></div>
                     <div className="circle-login bg-[#fda971]"></div>
@@ -106,14 +106,14 @@ const Login = () => {
                             />
                         </div>
                         <div className="flex justify-center">
-                            <Button type={'submit'} className="btn-login">
+                            <Button type={'submit'} className={'btn-login'}>
                                 Iniciar sesion
                             </Button>
                         </div>
                         <div className="flex justify-center">
                             <Button
                                 type={'button'}
-                                className="btn-register"
+                                className={'btn-register'}
                                 onClick={handleSignUp}
                             >
                                 REGISTRATE

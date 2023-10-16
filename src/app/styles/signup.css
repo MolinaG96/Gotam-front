@@ -7,7 +7,7 @@
     border: 2px solid black;
 }
 
-.back {
+.container-signup-back {
     position: absolute;
     background-color: #ff99ff;
     z-index: 1;
@@ -15,7 +15,7 @@
     top: 22.5vh;
 }
 
-.front {
+.container-signup-front {
     z-index: 10;
 }
 
