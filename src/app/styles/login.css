@@ -7,7 +7,7 @@
     border: 2px solid black;
 }
 
-.back {
+.container-login-back {
     position: absolute;
     background-color: #ff99ff;
     z-index: 1;
@@ -15,7 +15,7 @@
     top: 22.5vh;
 }
 
-.front {
+.container-login-front {
     z-index: 10;
 }
 
@@ -32,13 +32,13 @@
 }
 
 .btn-login {
-    margin-top: -2.5vw;
+    margin-top: -2.5vw !important;
     font-size: 1.1vw;
     width: 16vw;
 }
 
 .btn-register {
-    margin-top: 2vw;
+    margin-top: 2vw !important;
     font-size: 1.1vw;
     width: 16vw;
 }

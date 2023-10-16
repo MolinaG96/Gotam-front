@@ -1,6 +1,5 @@
 'use client'
 import '@/app/styles/employeesManagement.css'
-import { RiLogoutBoxLine } from 'react-icons/ri'
 import Slider from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
@@ -11,6 +10,7 @@ import EmployeeCard from '@/app/components/EmployeeCard'
 import Logo from '@/app/commons/Logo'
 import { FaUserPlus } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
+import Logout from '@/app/commons/Logout'
 
 const EmployeesManagement = () => {
     const router = useRouter()
@@ -48,7 +48,8 @@ const EmployeesManagement = () => {
             }}
         >
             <Logo disable={true} />
-            <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
+
+            <Logout />
 
             <div className="cont-employees overflow-hidden">
                 <div className="nav-employees w-full h-[10%] flex justify-between items-center">

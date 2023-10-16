@@ -95,8 +95,8 @@ const SignUp = () => {
             }}
         >
             <Logo disable={true} />
-            <div className="container-signup back"></div>
-            <div className="container-signup front">
+            <div className="container-signup container-signup-back"></div>
+            <div className="container-signup container-signup-front">
                 <div className="nav-signup w-full h-[20%] flex justify-start items-center">
                     <div className="circle-signup bg-[#76aed6]"></div>
                     <div className="circle-signup bg-[#fda971]"></div>

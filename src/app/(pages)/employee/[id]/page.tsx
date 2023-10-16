@@ -3,7 +3,6 @@ import '../../../styles/employeeAndAreaEdit.css'
 import { Input } from '@/app/commons/Input'
 import useInput from '@/app/hooks/useInput'
 import { useEffect, useState } from 'react'
-import { RiLogoutBoxLine } from 'react-icons/ri'
 import { FaUserPlus, FaGraduationCap } from 'react-icons/fa'
 import { LiaBirthdayCakeSolid } from 'react-icons/lia'
 import { BiCreditCardFront } from 'react-icons/bi'
@@ -22,6 +21,7 @@ import Logo from '@/app/commons/Logo'
 import { getEmployeeByDni } from '@/app/services/getEmployeeByDni'
 import type IEmployee from '@/app/interfaces/IEmployee'
 import { getAreaByName } from '@/app/services/getAreaByName'
+import Logout from '@/app/commons/Logout'
 
 const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
     const [Areas, setAreas] = useState<IArea[]>()
@@ -355,7 +355,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
         >
             <Logo disable={false} />
 
-            <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
+            <Logout />
             {/* employee */}
             <div className="h-full w-[50%] flex justify-end items-center">
                 <div className="cont-edit-employee z-10 mr-24">

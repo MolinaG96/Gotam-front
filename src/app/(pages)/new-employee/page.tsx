@@ -4,7 +4,6 @@ import '../../styles/employeeCreate.css'
 import { Input } from '@/app/commons/Input'
 import useInput from '@/app/hooks/useInput'
 import { useEffect, useState } from 'react'
-import { RiLogoutBoxLine } from 'react-icons/ri'
 import { FaUserPlus, FaGraduationCap } from 'react-icons/fa'
 import { BiCreditCardFront } from 'react-icons/bi'
 import { MdDescription } from 'react-icons/md'
@@ -17,6 +16,7 @@ import type IArea from '@/app/interfaces/IArea'
 import { getAllAreas } from '@/app/services/getAllAreas'
 import { updateAreaWithNewEmployee } from '@/app/services/updateAreaWithNewEmployee'
 import Logo from '@/app/commons/Logo'
+import Logout from '@/app/commons/Logout'
 
 const NewEmployee = () => {
     const [developer, setDeveloper] = useState(false)
@@ -174,7 +174,7 @@ const NewEmployee = () => {
         >
             <Logo disable={false} />
 
-            <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
+            <Logout />
             {/* employee */}
             <div className="h-full w-[50%] flex justify-end items-center">
                 <div className="container-employee-create z-10 mr-24">
