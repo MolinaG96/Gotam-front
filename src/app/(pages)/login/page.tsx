@@ -60,13 +60,13 @@ const Login = () => {
             }}
         >
             <Logo disable={true} />
-            <div className="cont-login back"></div>
+            <div className="container-login back"></div>
 
-            <div className="cont-login front">
+            <div className="container-login front">
                 <div className="nav-login w-full h-[20%] flex justify-start items-center">
-                    <div className="circle bg-[#76aed6]"></div>
-                    <div className="circle bg-[#fda971]"></div>
-                    <div className="circle bg-[#aef496]"></div>
+                    <div className="circle-login bg-[#76aed6]"></div>
+                    <div className="circle-login bg-[#fda971]"></div>
+                    <div className="circle-login bg-[#aef496]"></div>
                 </div>
                 <div className="w-full h-[80%]">
                     <form
@@ -113,7 +113,7 @@ const Login = () => {
                         <div className="flex justify-center">
                             <Button
                                 type={'button'}
-                                className="btn-reg"
+                                className="btn-register"
                                 onClick={handleSignUp}
                             >
                                 REGISTRATE

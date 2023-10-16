@@ -177,11 +177,11 @@ const NewEmployee = () => {
             <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
             {/* employee */}
             <div className="h-full w-[50%] flex justify-end items-center">
-                <div className="cont-login front mr-24">
-                    <div className="nav-login w-full h-[10%] flex justify-start items-center">
-                        <div className="circle bg-[#76aed6]"></div>
-                        <div className="circle bg-[#fda971]"></div>
-                        <div className="circle bg-[#aef496]"></div>
+                <div className="container-employee-create z-10 mr-24">
+                    <div className="employee-area-create-straight-line w-full h-[10%] flex justify-start items-center">
+                        <div className="create-employee-circle bg-[#76aed6]"></div>
+                        <div className="create-employee-circle bg-[#fda971]"></div>
+                        <div className="create-employee-circle bg-[#aef496]"></div>
                     </div>
                     <div className="w-full h-[90%]">
                         <form
@@ -249,7 +249,10 @@ const NewEmployee = () => {
                                 </label>
                             </div>
                             <div className="flex justify-center pt-[4.5vw]">
-                                <Button type={'submit'} className={'btn-login'}>
+                                <Button
+                                    type={'submit'}
+                                    className="text-[1.1vw] w-[16vw]"
+                                >
                                     CREAR EMPLEADO
                                 </Button>
                             </div>
@@ -260,15 +263,15 @@ const NewEmployee = () => {
             {/* area */}
 
             <div className=" h-full w-[50%] flex justify-start items-center ">
-                <div className="cont-login2 front ml-24 ">
-                    <div className="nav-login w-full h-[10%] flex justify-start items-center">
-                        <div className="square bg-[#EAFAB0] flex justify-center items-center">
-                            <div className="line line1 "></div>
-                            <div className="line line2 "></div>
+                <div className="container-area-create z-10 ml-24 ">
+                    <div className="employee-area-create-straight-line w-full h-[10%] flex justify-start items-center">
+                        <div className="square-create-area bg-[#EAFAB0] flex justify-center items-center">
+                            <div className="line-square-create line-square-create-line1  "></div>
+                            <div className="line-square-create line-square-create-line2 "></div>
                         </div>
                     </div>
-                    <div className=" cont-in w-full h-[90%] flex justify-center items-center">
-                        <div className="cont-inin w-[95%] h-[95%]">
+                    <div className="container-area-create-bg w-full h-[90%] flex justify-center items-center">
+                        <div className="container-area-create-bg-above-bg w-[95%] h-[95%]">
                             <form
                                 onSubmit={handleNewArea}
                                 className="px-8  w-full h-full flex flex-col justify-center"
@@ -287,7 +290,7 @@ const NewEmployee = () => {
                                 <div className="flex justify-center pt-[4vw]">
                                     <Button
                                         type={'submit'}
-                                        className={'btn-login'}
+                                        className="text-[1.1vw] w-[16vw]"
                                     >
                                         CREAR AREA
                                     </Button>

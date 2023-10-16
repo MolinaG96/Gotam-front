@@ -9,8 +9,11 @@ import { getAllEmployeesByArea } from '@/app/services/getAllEmployeesByArea'
 import type IArea from '@/app/interfaces/IArea'
 import EmployeeCard from '@/app/components/EmployeeCard'
 import Logo from '@/app/commons/Logo'
+import { FaUserPlus } from 'react-icons/fa'
+import { useRouter } from 'next/navigation'
 
 const EmployeesManagement = () => {
+    const router = useRouter()
     const [areas, setAreas] = useState<IArea[]>([])
 
     const sliderSettings = {
@@ -47,11 +50,19 @@ const EmployeesManagement = () => {
             <Logo disable={true} />
             <RiLogoutBoxLine className="absolute w-20 h-20 right-8 top-5 cursor-pointer" />
 
-            <div className="cont-login front overflow-hidden">
-                <div className="nav-login w-full h-[10%] flex justify-start items-center">
-                    <div className="circle bg-[#76aed6]"></div>
-                    <div className="circle bg-[#fda971]"></div>
-                    <div className="circle bg-[#aef496]"></div>
+            <div className="cont-employees overflow-hidden">
+                <div className="nav-employees w-full h-[10%] flex justify-between items-center">
+                    <div className="flex justify-start items-center">
+                        <div className="circle-employees bg-[#76aed6]"></div>
+                        <div className="circle-employees bg-[#fda971]"></div>
+                        <div className="circle-employees bg-[#aef496]"></div>
+                    </div>
+                    <FaUserPlus
+                        className="mr-2 w-[3vw] h-[3vw] transition motion-safe:hover:scale-110 cursor-pointer"
+                        onClick={() => {
+                            router.push('/new-employee')
+                        }}
+                    />
                 </div>
                 <div className="w-full h-[90%] bg-white">
                     <div

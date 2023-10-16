@@ -1,4 +1,4 @@
-.cont-login {
+.container-employee-create {
     width: 25vw;
     max-width: 800px;
     height: 70vh;
@@ -7,7 +7,7 @@
     border: 2px solid black;
 }
 
-.cont-login2 {
+.container-area-create {
     width: 25vw;
     max-width: 800px;
     height: 70vh;
@@ -15,44 +15,37 @@
     background-color: #f793c3;
     border: 2px solid black;
 }
-.cont-in {
+
+.container-area-create-bg {
     background-color: rgb(117, 211, 255);
 }
-.cont-inin {
+
+.container-area-create-bg-above-bg {
     background-color: rgb(143, 244, 204);
     border: 2px solid black;
 }
-.back {
-    position: absolute;
-    background-color: rgb(153, 255, 235);
-    z-index: 1;
-    left: 28.5vw;
-    top: 22.5vh;
-}
 
-.front {
-    z-index: 10;
-}
-
-.nav-login {
+.employee-area-create-straight-line {
     border-bottom: 2px solid black;
 }
 
-.circle {
+.create-employee-circle {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
     border-radius: 50%;
     border: 2px solid black;
 }
-.square {
+
+.square-create-area {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
     border: 2px solid black;
     position: relative;
 }
-.line {
+
+.line-square-create {
     position: absolute;
     width: 150%;
     height: 2px;
@@ -60,18 +53,10 @@
     transform-origin: center;
 }
 
-.line1 {
+.line-square-create-line1 {
     transform: rotate(45deg);
 }
 
-.line2 {
+.line-square-create-line2 {
     transform: rotate(-45deg);
-}
-.btn-login {
-    font-size: 1.1vw;
-    width: 16vw;
-}
-.btn-reg {
-    font-size: 1.1vw;
-    width: 16vw;
 }

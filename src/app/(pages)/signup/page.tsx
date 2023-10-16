@@ -1,6 +1,6 @@
 'use client'
 import { Button } from '@/app/commons/Button'
-import '../../styles/login.css'
+import '../../styles/signup.css'
 import { useRouter } from 'next/navigation'
 import Swal from 'sweetalert2'
 import useInput from '@/app/hooks/useInput'
@@ -95,12 +95,12 @@ const SignUp = () => {
             }}
         >
             <Logo disable={true} />
-            <div className="cont-login back"></div>
-            <div className="cont-login front">
-                <div className="nav-login w-full h-[20%] flex justify-start items-center">
-                    <div className="circle bg-[#76aed6]"></div>
-                    <div className="circle bg-[#fda971]"></div>
-                    <div className="circle bg-[#aef496]"></div>
+            <div className="container-signup back"></div>
+            <div className="container-signup front">
+                <div className="nav-signup w-full h-[20%] flex justify-start items-center">
+                    <div className="circle-signup bg-[#76aed6]"></div>
+                    <div className="circle-signup bg-[#fda971]"></div>
+                    <div className="circle-signup bg-[#aef496]"></div>
                 </div>
                 <div className="w-full h-[80%]">
                     <form
@@ -172,7 +172,7 @@ const SignUp = () => {
                             />
                         </div>
                         <div className="flex justify-center pt-[4.5vw]">
-                            <Button type={'submit'} className="btn-login">
+                            <Button type={'submit'} className="btn-signup">
                                 CREAR CUENTA
                             </Button>
                         </div>

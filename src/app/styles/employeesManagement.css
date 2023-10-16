@@ -1,19 +1,16 @@
-.cont-login {
+.cont-employees {
     width: 80vw;
     height: 71vh;
     background-color: #f0fd71;
     border: 2px solid black;
-}
-
-.nav-login {
-    border-bottom: 2px solid black;
-}
-
-.front {
     z-index: 10;
 }
 
-.circle {
+.nav-employees {
+    border-bottom: 2px solid black;
+}
+
+.circle-employees {
     width: 2vw;
     height: 2vw;
     margin: 0.7vw;
