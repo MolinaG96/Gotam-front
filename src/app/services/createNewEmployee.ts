@@ -2,9 +2,7 @@ import type IEmployee from '../interfaces/IEmployee'
 
 import axiosInstance from './axiosInstance'
 
-export const createNewEmployee = async (
-    newEmployee: IEmployee
-): Promise<IEmployee> => {
+export const createNewEmployee = async (newEmployee: IEmployee) => {
     try {
         const response = await axiosInstance.post(
             '/employee/new-employee',

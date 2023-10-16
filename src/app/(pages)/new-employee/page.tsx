@@ -7,7 +7,6 @@ import { useEffect, useState } from 'react'
 import { RiLogoutBoxLine } from 'react-icons/ri'
 import { FaUserPlus, FaGraduationCap } from 'react-icons/fa'
 import { BiCreditCardFront } from 'react-icons/bi'
-import { AiOutlineMail } from 'react-icons/ai'
 import { MdDescription } from 'react-icons/md'
 import { LiaBirthdayCakeSolid } from 'react-icons/lia'
 import { createNewEmployee } from '@/app/services/createNewEmployee'
@@ -69,11 +68,11 @@ const NewEmployee = () => {
                 description: description.value,
             })
 
-            if (newEmployee !== null) {
+            if (newEmployee?._id) {
                 await updateAreaWithNewEmployee(
                     selectedArea._id,
                     selectedArea.area,
-                    newEmployee
+                    newEmployee._id
                 )
                 await Swal.fire({
                     text: 'Empleado creado con éxito!',
@@ -83,8 +82,9 @@ const NewEmployee = () => {
                 name.reset()
                 dni.reset()
                 birthday.reset()
-                setDeveloper(false)
                 description.reset()
+                setDeveloper(false)
+                setSelectedArea(undefined)
             } else {
                 await Swal.fire({
                     text: 'Error al crear empleado, intente nuevamente mas tarde',
@@ -299,6 +299,7 @@ const NewEmployee = () => {
                                         id="areas"
                                         className="mt-[11vh] mb-[11vh] bg-[#e2eb99] border-2 border-blue-600 p-2 placeholder-gray-600 font-disketMonoBold text-black"
                                         onChange={handleSelectArea}
+                                        value={selectedArea?._id ?? ''}
                                     >
                                         <option className="s" value="">
                                             Selecciona un área
