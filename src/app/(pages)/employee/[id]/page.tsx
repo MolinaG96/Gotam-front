@@ -22,8 +22,11 @@ import { getEmployeeByDni } from '@/app/services/getEmployeeByDni'
 import type IEmployee from '@/app/interfaces/IEmployee'
 import { getAreaByName } from '@/app/services/getAreaByName'
 import Logout from '@/app/commons/Logout'
+import type IUser from '@/app/interfaces/IUser'
+import { persistence } from '@/app/services/persistence'
 
 const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
+    const [user, setUser] = useState<IUser>()
     const [Areas, setAreas] = useState<IArea[]>()
     const [selectedArea, setSelectedArea] = useState<IArea>()
     const area = useInput('')
@@ -339,11 +342,27 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
         }
     }
 
+    const fetchUserByToken = async () => {
+        try {
+            const userByToken = await persistence()
+
+            if (userByToken !== null) {
+                setUser(userByToken)
+            }
+        } catch (error) {
+            console.error('Error al obtener el usuario:', error)
+        }
+    }
+
     useEffect(() => {
-        void fetchEmployee()
-        void fetchEmployeeArea()
-        void fetchAllAreas()
-    }, [])
+        const token = localStorage.getItem('user')
+        if (token !== null && user === undefined) void fetchUserByToken()
+        if (user !== undefined) {
+            void fetchEmployee()
+            void fetchEmployeeArea()
+            void fetchAllAreas()
+        }
+    }, [user])
 
     return (
         <div

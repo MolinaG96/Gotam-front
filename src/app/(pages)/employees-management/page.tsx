@@ -11,9 +11,12 @@ import Logo from '@/app/commons/Logo'
 import { FaUserPlus } from 'react-icons/fa'
 import { useRouter } from 'next/navigation'
 import Logout from '@/app/commons/Logout'
+import { persistence } from '@/app/services/persistence'
+import type IUser from '@/app/interfaces/IUser'
 
 const EmployeesManagement = () => {
     const router = useRouter()
+    const [user, setUser] = useState<IUser>()
     const [areas, setAreas] = useState<IArea[]>([])
 
     const sliderSettings = {
@@ -26,6 +29,18 @@ const EmployeesManagement = () => {
         rows: 6,
     }
 
+    const fetchUserByToken = async () => {
+        try {
+            const userByToken = await persistence()
+
+            if (userByToken !== null) {
+                setUser(userByToken)
+            }
+        } catch (error) {
+            console.error('Error al obtener el usuario:', error)
+        }
+    }
+
     const fetchAllEmployeesByArea = async () => {
         try {
             const allAreas: IArea[] = await getAllEmployeesByArea()
@@ -36,8 +51,10 @@ const EmployeesManagement = () => {
     }
 
     useEffect(() => {
-        void fetchAllEmployeesByArea()
-    }, [])
+        const token = localStorage.getItem('user')
+        if (token !== null && user === undefined) void fetchUserByToken()
+        if (user !== undefined) void fetchAllEmployeesByArea()
+    }, [user])
 
     return (
         <div

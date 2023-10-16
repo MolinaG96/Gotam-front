@@ -17,8 +17,11 @@ import { getAllAreas } from '@/app/services/getAllAreas'
 import { updateAreaWithNewEmployee } from '@/app/services/updateAreaWithNewEmployee'
 import Logo from '@/app/commons/Logo'
 import Logout from '@/app/commons/Logout'
+import { persistence } from '@/app/services/persistence'
+import type IUser from '@/app/interfaces/IUser'
 
 const NewEmployee = () => {
+    const [user, setUser] = useState<IUser>()
     const [developer, setDeveloper] = useState(false)
     const [Areas, setAreas] = useState<IArea[]>()
     const [selectedArea, setSelectedArea] = useState<IArea>()
@@ -160,9 +163,23 @@ const NewEmployee = () => {
         }
     }
 
+    const fetchUserByToken = async () => {
+        try {
+            const userByToken = await persistence()
+
+            if (userByToken !== null) {
+                setUser(userByToken)
+            }
+        } catch (error) {
+            console.error('Error al obtener el usuario:', error)
+        }
+    }
+
     useEffect(() => {
-        void fetchAllAreas()
-    }, [])
+        const token = localStorage.getItem('user')
+        if (token !== null && user === undefined) void fetchUserByToken()
+        if (user !== undefined) void fetchAllAreas()
+    }, [user])
 
     return (
         <div
