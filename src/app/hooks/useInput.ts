@@ -11,5 +11,5 @@ export default function useInput<T>(initialValue: T) {
         setValue(initialValue)
     }
 
-    return { value, onChange: handleChange, reset }
+    return { value, onChange: handleChange, reset, setValue }
 }
