@@ -19,11 +19,15 @@ import { getEmployeeArea } from '@/app/services/getEmployeeArea'
 import { deleteEmployee } from '@/app/services/deleteEmployee'
 import { deleteArea } from '@/app/services/deleteArea'
 import Logo from '@/app/commons/Logo'
+import { getEmployeeByDni } from '@/app/services/getEmployeeByDni'
+import type IEmployee from '@/app/interfaces/IEmployee'
+import { getAreaByName } from '@/app/services/getAreaByName'
 
 const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
     const [Areas, setAreas] = useState<IArea[]>()
     const [selectedArea, setSelectedArea] = useState<IArea>()
     const area = useInput('')
+    const [employee, setEmployee] = useState<IEmployee>()
     const [developer, setDeveloper] = useState(false)
     const name = useInput('')
     const dni = useInput(0)
@@ -39,8 +43,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                 name.value === '' ||
                 !dni.value ||
                 birthday.value === '' ||
-                description.value === '' ||
-                parseFloat(dni.value.toString()) === 0
+                description.value === ''
             ) {
                 await Swal.fire({
                     text: 'No puede haber campos vacios para editar un empleado!',
@@ -72,6 +75,33 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                 description.value !== undefined &&
                 areaOfEmployeeToDelete !== undefined
             ) {
+                if (
+                    selectedArea._id === areaOfEmployeeToDelete._id &&
+                    name.value === employee?.name &&
+                    dni.value === employee.dni &&
+                    description.value === employee.description &&
+                    developer === employee.developer &&
+                    birthday.value === employee.birthday
+                ) {
+                    await Swal.fire({
+                        text: 'Cambie algun dato si desea editar al empleado',
+                        icon: 'error',
+                    })
+                    return
+                }
+
+                const dniCorroboration = await getEmployeeByDni(dni.value)
+                if (
+                    dniCorroboration &&
+                    dniCorroboration._id !== employee?._id
+                ) {
+                    await Swal.fire({
+                        text: 'Ya existe un empleado con ese dni!',
+                        icon: 'error',
+                    })
+                    return
+                }
+
                 const editedEmployee = await editEmployee(
                     {
                         name: name.value,
@@ -91,6 +121,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                         icon: 'success',
                         confirmButtonText: 'Ok',
                     })
+                    setAreaOfEmployeeToDelete(selectedArea)
                     await fetchEmployee()
                 } else {
                     await Swal.fire({
@@ -134,6 +165,16 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                 return
             }
 
+            const areaNameVerification = await getAreaByName(area.value)
+
+            if (areaNameVerification) {
+                await Swal.fire({
+                    text: 'Ya existe un area con ese nombre',
+                    icon: 'error',
+                })
+                return
+            }
+
             if (selectedArea !== undefined) {
                 const areaNameEdited = await editAreaName(
                     selectedArea._id,
@@ -145,7 +186,9 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                         icon: 'success',
                         confirmButtonText: 'Ok',
                     })
-                    setAreaOfEmployeeToDelete(areaNameEdited)
+                    if (areaNameEdited._id === areaOfEmployeeToDelete?._id) {
+                        setAreaOfEmployeeToDelete(areaNameEdited)
+                    }
                     await fetchAllAreas()
                 }
             }
@@ -265,6 +308,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
         try {
             const fetchedEmployee = await getEmployeeById(params.id)
 
+            setEmployee(fetchedEmployee)
             name.setValue(fetchedEmployee.name)
             dni.setValue(fetchedEmployee.dni)
             birthday.setValue(fetchedEmployee.birthday)
