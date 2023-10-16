@@ -18,7 +18,7 @@ export const Button: React.FC<ButtonProps> = ({
 }) => {
     return (
         <button
-            className={`absolute  border-none focus:outline-none button-generic ${
+            className={`absolute  border-none focus:outline-none button-generic transition motion-safe:hover:scale-110 ${
                 className ?? ''
             }`}
             type={type === 'button' ? 'button' : 'submit'}
