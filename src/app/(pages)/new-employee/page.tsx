@@ -31,6 +31,11 @@ const NewEmployee = () => {
     const description = useInput('')
     const area = useInput('')
 
+    const convertToDatabaseFormat = async (dateString: string) => {
+        const [day, month, year] = dateString.split('-')
+        return `${year}-${month}-${day}`
+    }
+
     const handleNewEmployee = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
         try {
@@ -64,10 +69,12 @@ const NewEmployee = () => {
                 return
             }
 
+            const formatDDMMYYYY = await convertToDatabaseFormat(birthday.value)
+
             const newEmployee = await createNewEmployee({
                 name: name.value,
                 dni: dni.value,
-                birthday: birthday.value,
+                birthday: formatDDMMYYYY,
                 developer,
                 description: description.value,
             })
@@ -234,7 +241,7 @@ const NewEmployee = () => {
                             <div className="mb-4">
                                 <Input
                                     placeholder="nacimiento:"
-                                    type="text"
+                                    type="date"
                                     iconType={
                                         <LiaBirthdayCakeSolid className="w-full h-full" />
                                     }
