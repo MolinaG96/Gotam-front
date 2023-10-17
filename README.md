@@ -6,11 +6,11 @@ This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next
 
 ## Getting Started
 
--**clone the repository on your computer**
--**run npm i to install all dependencies**
--**npm run dev to run the server**
--**If you have a backend you can create an .env where you should put something like this:**
-**NEXT_PUBLIC_API_URL=http://localhost:8080**
+- **clone the repository on your computer**
+- **run npm i to install all dependencies**
+- **npm run dev to run the server**
+- **If you have a backend you can create an .env where you should put something like this:**
+ **NEXT_PUBLIC_API_URL=http://localhost:8080**
 
 ```bash
 npm i
