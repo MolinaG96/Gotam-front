@@ -2,7 +2,7 @@ FROM node:16-alpine
 
 WORKDIR /app
 
-ENV NEXT_PUBLIC_API_URL=valor_por_defecto
+ENV NEXT_PUBLIC_API_URL=$NEXT_PUBLIC_API_URL
 
 COPY . .
 
