@@ -1,0 +1,73 @@
+.cont-edit-employee {
+    width: 25vw;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #f0fd71;
+    border: 2px solid black;
+}
+
+.cont-edit-area {
+    width: 25vw;
+    max-width: 800px;
+    height: 70vh;
+    max-height: 500px;
+    background-color: #f793c3;
+    border: 2px solid black;
+}
+
+.cont-edit-area-bg {
+    background-color: rgb(117, 211, 255);
+}
+
+.cont-edit-area-bg-above-bg {
+    background-color: rgb(143, 244, 204);
+    border: 2px solid black;
+}
+
+.straight-line-for-containers {
+    border-bottom: 2px solid black;
+}
+
+.circle-edit-employee {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.area-edit-container-square {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border: 2px solid black;
+    position: relative;
+}
+
+.line-square {
+    position: absolute;
+    width: 150%;
+    height: 2px;
+    background-color: #000;
+    transform-origin: center;
+}
+
+.diagonal-line1 {
+    transform: rotate(45deg);
+}
+
+.diagonal-line2 {
+    transform: rotate(-45deg);
+}
+
+.img-trash {
+    width: 2.5vw;
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.img-trash:hover {
+    transform: scale(1.1);
+    position: relative;
+}

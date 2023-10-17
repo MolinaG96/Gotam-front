@@ -1,0 +1,44 @@
+.container-login {
+    width: 40vw;
+    max-width: 800px;
+    height: 50vh;
+    max-height: 500px;
+    background-color: #f0fd71;
+    border: 2px solid black;
+}
+
+.container-login-back {
+    position: absolute;
+    background-color: #ff99ff;
+    z-index: 1;
+    left: 28.5vw;
+    top: 22.5vh;
+}
+
+.container-login-front {
+    z-index: 10;
+}
+
+.nav-login {
+    border-bottom: 2px solid black;
+}
+
+.circle-login {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.btn-login {
+    margin-top: -2.5vw !important;
+    font-size: 1.1vw;
+    width: 16vw;
+}
+
+.btn-register {
+    margin-top: 2vw !important;
+    font-size: 1.1vw;
+    width: 16vw;
+}

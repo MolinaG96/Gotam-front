@@ -2,4 +2,17 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+    font-family: 'Disket-Mono-Bold';
+    src: url('../../../public/fonts/Disket-Mono-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'Disket-Mono-Regular';
+    src: url('../../../public/fonts/Disket-Mono-Bold.ttf') format('truetype');
+}
+
 /* body {} */
+body {
+    overflow: hidden;
+}

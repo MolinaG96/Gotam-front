@@ -1,0 +1,38 @@
+.container-signup {
+    width: 40vw;
+    max-width: 800px;
+    height: 50vh;
+    max-height: 500px;
+    background-color: #f0fd71;
+    border: 2px solid black;
+}
+
+.container-signup-back {
+    position: absolute;
+    background-color: #ff99ff;
+    z-index: 1;
+    left: 28.5vw;
+    top: 22.5vh;
+}
+
+.container-signup-front {
+    z-index: 10;
+}
+
+.nav-signup {
+    border-bottom: 2px solid black;
+}
+
+.circle-signup {
+    width: 2vw;
+    height: 2vw;
+    margin: 0.7vw;
+    border-radius: 50%;
+    border: 2px solid black;
+}
+
+.btn-signup {
+    margin-top: -2.5vw;
+    font-size: 1.1vw;
+    width: 16vw;
+}
