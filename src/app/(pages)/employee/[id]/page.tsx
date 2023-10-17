@@ -206,6 +206,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                     if (areaNameEdited._id === areaOfEmployeeToDelete?._id) {
                         setAreaOfEmployeeToDelete(areaNameEdited)
                     }
+                    setSelectedArea(areaNameEdited)
                     await fetchAllAreas()
                 }
             }
