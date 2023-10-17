@@ -13,6 +13,7 @@ import { useRouter } from 'next/navigation'
 import Logout from '@/app/commons/Logout'
 import { persistence } from '@/app/services/persistence'
 import type IUser from '@/app/interfaces/IUser'
+import Swal from 'sweetalert2'
 
 const EmployeesManagement = () => {
     const router = useRouter()
@@ -50,8 +51,23 @@ const EmployeesManagement = () => {
         }
     }
 
+    const toLogin = async () => {
+        try {
+            await Swal.fire({
+                text: 'Debe ingresar con su usuario para poder usar la aplicacion',
+                icon: 'error',
+            })
+            router.push('/login')
+        } catch (error) {
+            console.error('employees management to login error', error)
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('user')
+        if (token === null) {
+            void toLogin()
+        }
         if (token !== null && user === undefined) void fetchUserByToken()
         if (user !== undefined) void fetchAllEmployeesByArea()
     }, [user])

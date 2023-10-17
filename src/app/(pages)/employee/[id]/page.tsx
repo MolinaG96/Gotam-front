@@ -24,8 +24,10 @@ import { getAreaByName } from '@/app/services/getAreaByName'
 import Logout from '@/app/commons/Logout'
 import type IUser from '@/app/interfaces/IUser'
 import { persistence } from '@/app/services/persistence'
+import { useRouter } from 'next/navigation'
 
 const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
+    const router = useRouter()
     const [user, setUser] = useState<IUser>()
     const [Areas, setAreas] = useState<IArea[]>()
     const [selectedArea, setSelectedArea] = useState<IArea>()
@@ -368,8 +370,23 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
         }
     }
 
+    const toLogin = async () => {
+        try {
+            await Swal.fire({
+                text: 'Debe ingresar con su usuario para poder usar la aplicacion',
+                icon: 'error',
+            })
+            router.push('/login')
+        } catch (error) {
+            console.error('employee id to login error', error)
+        }
+    }
+
     useEffect(() => {
         const token = localStorage.getItem('user')
+        if (token === null) {
+            void toLogin()
+        }
         if (token !== null && user === undefined) void fetchUserByToken()
         if (user !== undefined) {
             void fetchEmployee()
