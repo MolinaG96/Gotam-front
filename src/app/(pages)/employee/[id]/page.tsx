@@ -40,6 +40,11 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
     const [areaOfEmployeeToDelete, setAreaOfEmployeeToDelete] =
         useState<IArea>()
 
+    const convertToDatabaseFormat = async (dateString: string) => {
+        const [day, month, year] = dateString.split('-')
+        return `${year}-${month}-${day}`
+    }
+
     const handleEditEmployee = async () => {
         try {
             if (
@@ -71,6 +76,10 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                 return
             }
 
+            const birthdayvalidation = await convertToDatabaseFormat(
+                birthday.value
+            )
+
             if (
                 name.value !== undefined &&
                 birthday.value !== undefined &&
@@ -84,7 +93,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                     dni.value === employee.dni &&
                     description.value === employee.description &&
                     developer === employee.developer &&
-                    birthday.value === employee.birthday
+                    birthdayvalidation === employee.birthday
                 ) {
                     await Swal.fire({
                         text: 'Cambie algun dato si desea editar al empleado',
@@ -104,12 +113,15 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                     })
                     return
                 }
+                const formatDDMMYYYY = await convertToDatabaseFormat(
+                    birthday.value
+                )
 
                 const editedEmployee = await editEmployee(
                     {
                         name: name.value,
                         dni: dni.value,
-                        birthday: birthday.value,
+                        birthday: formatDDMMYYYY,
                         developer,
                         description: description.value,
                     },
@@ -310,11 +322,13 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
     const fetchEmployee = async () => {
         try {
             const fetchedEmployee = await getEmployeeById(params.id)
-
+            const birthdayChangeFormat = await convertToDatabaseFormat(
+                fetchedEmployee.birthday
+            )
             setEmployee(fetchedEmployee)
             name.setValue(fetchedEmployee.name)
             dni.setValue(fetchedEmployee.dni)
-            birthday.setValue(fetchedEmployee.birthday)
+            birthday.setValue(birthdayChangeFormat)
             description.setValue(fetchedEmployee.description)
             setDeveloper(fetchedEmployee.developer)
         } catch (error) {
@@ -422,7 +436,7 @@ const EditEmployeeAndArea = ({ params }: { params: { id: string } }) => {
                             <div className="mb-4">
                                 <Input
                                     placeholder="nacimiento:"
-                                    type="text"
+                                    type="date"
                                     iconType={
                                         <LiaBirthdayCakeSolid className="w-full h-full" />
                                     }
