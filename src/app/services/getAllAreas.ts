@@ -1,4 +1,4 @@
-import IArea from '../interfaces/IArea'
+import type IArea from '../interfaces/IArea'
 import axiosInstance from './axiosInstance'
 
 export const getAllAreas = async (): Promise<IArea[]> => {

@@ -1,4 +1,4 @@
-import IEmployee from './IEmployee'
+import type IEmployee from './IEmployee'
 
 export default interface IArea {
     _id: string
