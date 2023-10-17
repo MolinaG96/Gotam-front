@@ -10,7 +10,7 @@ export default function Home() {
 
     const fetchUserByToken = async () => {
         try {
-            const userToken: IUser = await persistence()
+            const userToken = await persistence()
             if (userToken !== null) {
                 router.push('/employees-management')
             } else {
