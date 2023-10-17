@@ -17,7 +17,7 @@ npm i
 npm run dev
 ```
 
--You can also create a build to optimize the application
+- **You can also create a build to optimize the application**
 
 ```bash
 npm i
@@ -176,8 +176,8 @@ const packages: IArea =
 
 ## Actions:
 
--   create new employee: By clicking the "create" button, the new employee's information is sent to the back.
--   create new area: By clicking the "create" button, the new area's information is sent to the back.
+- **create new employee: By clicking the "create" button, the new employee's information is sent to the back.**
+- **create new area: By clicking the "create" button, the new area's information is sent to the back.**
 
 ### Edit-employee
 
@@ -186,10 +186,10 @@ You can edit all the properties of the employee, as well as delete it and also e
 
 ## Actions:
 
--   edit employee: By clicking the "edit" button, the new employee data is sent to the back
--   delete employee: By clicking the "trash" button, the employee in question is eliminated and removed from the area in which he was
--   edit area: By clicking the "edit" button, the new area name is sent to the back
--   delete area: By clicking the "trash" button, the area in question is eliminated only if it does not contain employees
+- **edit employee: By clicking the "edit" button, the new employee data is sent to the back**
+- **delete employee: By clicking the "trash" button, the employee in question is eliminated and removed from the area in which he was**
+- **edit area: By clicking the "edit" button, the new area name is sent to the back**
+- **delete area: By clicking the "trash" button, the area in question is eliminated only if it does not contain employees**
 
 ### Links:
 
@@ -197,12 +197,12 @@ You can edit all the properties of the employee, as well as delete it and also e
 
 -   [image in docker hub](https://hub.docker.com/repository/docker/molinagonzalo96/gotam-front/general)
 
--or you can directly do a pull with this code:
-docker pull molinagonzalo96/gotam-front:latest
+- **or you can directly do a pull with this code:**
+ **docker pull molinagonzalo96/gotam-front:latest**
 
 ## vercel
 
 -   [deploy on vercel](https://gotam-front.vercel.app/)
 
-Thank you for coming this far, I hope you like the application.
-If you want to contact me you can do so by this email: molinagomezgonzalo@gmail.com
+**Thank you for coming this far, I hope you like the application.**
+**If you want to contact me you can do so by this email: molinagomezgonzalo@gmail.com**
